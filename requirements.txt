@@ -1,0 +1,15 @@
+django
+pylint
+pylint-django
+gunicorn
+django-environ
+psycopg2
+django-rest-framework
+phonenumberslite
+django-phonenumber-field
+django-debug-toolbar
+django-bootstrap4==22.1
+num2words
+black
+mypy
+django-stubs

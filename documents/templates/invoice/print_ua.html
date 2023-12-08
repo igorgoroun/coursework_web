@@ -1,0 +1,122 @@
+{% extends 'layout_print.html' %}
+{% load i18n static %}
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'css/print_ua.css' %}"/>
+{% endblock %}
+{% block content %}
+    <br/><br/>
+    <div class="row">
+        <div class="col-sm-3 text-right text-muted">
+            <strong>{% translate 'Vendor' %}</strong>
+        </div>
+        <div class="col-sm-9 invoice-address-value">
+            <address>
+            {% if invoice.type == 'customer_invoice' %}
+                <strong>{{ invoice.company.fop_name_full }}</strong><br/>
+                {{ invoice.company.address }}<br/>
+                <u>{% translate 'P.' %}</u> {{ invoice.company.tel_number }}<br/>
+                {% if invoice.company.tel_fax %}<u>{% translate 'Fax' %}</u> {{ invoice.company.tel_fax }}<br/>{% endif %}
+                {% if invoice.company.itn %}<u>{% translate 'ITN' %}</u> {{ invoice.company.itn }}<br/>{% endif %}
+                {% if invoice.company.bank_accounts %}
+                    <u>IBAN</u> {{ invoice.company.main_bank_account.iban }}<br/>
+                    {{ invoice.company.main_bank_account.bank_name }}<br/>
+                {% endif %}
+                Є платником єдиного податку
+            {% endif %}
+            </address>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right text-muted">
+            <strong>{% translate 'Recipient' %}</strong>
+        </div>
+        <div class="col-sm-9 invoice-address-value">
+            <address>
+            {% if invoice.type == 'customer_invoice' %}
+                <strong>{{ invoice.partner.name }}</strong><br/>
+                {{ invoice.partner.address }}<br/>
+                <u>{% translate 'P.' %}</u> {{ invoice.partner.tel_number }}<br/>
+                {% if invoice.partner.tel_fax %}<u>{% translate 'Fax' %}</u> {{ invoice.partner.tel_fax }}<br/>{% endif %}
+                {% if invoice.partner.itn %}<u>{% translate 'ITN' %}</u> {{ invoice.partner.itn }}<br/>{% endif %}
+                {% if invoice.partner.bank_accounts %}
+                    <u>IBAN</u> {{ invoice.partner.bank_accounts.first.iban }}<br/>
+                    {{ invoice.partner.bank_accounts.first.bank_name }}
+                {% endif %}
+            {% endif %}
+            </address>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9">
+            <h4 class="display-4"><span class="text-muted">{% translate 'Invoice' %} №</span> {% if invoice.reference %}{{ invoice.reference }}{% else %}{{ invoice.number }}{% endif %}</h4>
+            <p>{{ invoice.issue_date }}</p>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col">
+            <table class="table table-condensed" role="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">№</th>
+                        <th>{% translate 'Product name' %}</th>
+                        <th class="text-center">{% translate 'UOM' %}</th>
+                        <th class="text-center">{% translate 'Quantity' %}</th>
+                        <th class="text-right">{% translate 'Price' %}</th>
+                        <th class="text-right">{% translate 'Amount' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for line in invoice.lines.all %}
+                    <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td>{{ line.product_hint }}</td>
+                        <td class="text-center">{{ line.product_uom_hint }}</td>
+                        <td class="text-center">{{ line.qty|floatformat:0 }}</td>
+                        <td class="text-right">{{ line.price|floatformat:2 }}</td>
+                        <td class="text-right">{{ line.amount|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+                    <tr>
+                        <td colspan="5" class="text-right"><strong>{% translate 'Amount total' %}</strong></td>
+                        <td class="text-right"><strong>{{ invoice.amount|floatformat:2 }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-9">
+            <strong>{% translate 'Total to pay' %}:</strong><br/>
+            {{ amount_string }}. {% translate 'No VAT' %}.
+        </div>
+    </div>
+    <br/><br/><br/>
+    <div class="row">
+        <div class="col-sm-3 text-right text-muted">
+            <strong>{% translate 'Invoice signer' %}</strong>
+        </div>
+        <div class="col-sm-9 invoice-address-value">
+            <table class="table">
+                <tr>
+                    <td style="width: 33%;border-top: 0; border-bottom: 1px solid #888;"></td>
+                    <td style="border-top: 0;">{{ invoice.company_signer.name_short }}</td>
+                </tr>
+                <!--
+                <tr style="border-bottom: 0;">
+                    <td class="text-muted text-center">мп</td>
+                </tr>
+                -->
+            </table>
+        </div>
+    </div>
+    <br/><br/>
+
+{% endblock %}
+

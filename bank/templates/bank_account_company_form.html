@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block title %}{% translate 'Bank account' %}{% endblock %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Bank Account' %}</h1>
+            {% if partner %}<h4>{{ partner.name }}</h4>{% endif %}
+            <form action="" method="post">
+                {% bootstrap_form form layout='horizontal' %}
+                {% csrf_token %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">{% translate 'Save' %}</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

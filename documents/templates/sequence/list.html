@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Sequences' %} <small><a href="{% url 'sequence_create' %}">+</a></small></h1>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-4">
+        {% for record in sequences %}
+        <div class="col mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ record.document | upper }}</h5>
+                    <p class="card-text">
+                        Mask: <kbd>{{ record.mask }}</kbd><br>
+                        Step: <kbd>{{ record.step }}</kbd><br>
+                    </p>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-secondary-outline dropdown-toggle" type="button"
+                                id="sequence_menu_{{ record.pk }}"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="sequence_menu_{{ record.pk }}">
+                            <a class="dropdown-item" href="{% url 'sequence_modify' record.pk %}">{% translate 'Modify sequence setup' %}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,151 @@
+{% extends 'layout_print.html' %}
+{% load i18n static %}
+{% block site_css %}
+    <link rel="stylesheet" href="{% static 'css/print_ua.css' %}"/>
+{% endblock %}
+{% block content %}
+    <br/><br/>
+    <div class="row">
+        <div class="col-5">
+            {{ 'Затверджую'|upper }}
+            <address>
+                Директор<br>
+                <strong>{{ completition.company.fop_name_short }}</strong><br><br>
+                ____________________{{ completition.company.own_name_short }}<br>
+            </address>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5">
+            {{ 'Затверджую'|upper }}
+            <address>
+                {{ completition.partner.representative_main.position }}<br>
+                <strong>{{ completition.partner.name }}</strong><br/><br>
+                ____________________{{ completition.partner.representative_name_short }}<br>
+            </address>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 text-right text-muted">
+
+        </div>
+        <div class="col-sm-9 invoice-address-value">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3 text-right text-muted">
+
+        </div>
+        <div class="col-sm-9 invoice-address-value">
+
+        </div>
+    </div>
+    <br/><br/>
+    <div class="row">
+        <div class="col-12 text-center">
+            <h4 class="display-4"><span class="text-muted">Акт №</span> {% if completition.reference %}{{ completition.reference }}{% else %}{{ completition.number }}{% endif %}</h4>
+            <p>здачі-прийняття робіт (надання послуг) від <strong>{{ completition.sign_date }}</strong></p>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+    <div class="col-12">
+        <p>
+            Ми, представники Замовника {{ completition.partner.name }} {{ completition.partner.representative_name_short }},
+            з одного боку,
+            та представник Виконавця {{ completition.company.fop_name_short }} {{ completition.company.own_name_short }},
+            з іншого боку, склали цей акт про те, що Виконавцем були проведені такі роботи (надані такі послуги)
+            {% if completition.origin_contract %}
+            по договору № {% if completition.origin_contract.reference %}{{ completition.origin_contract.reference }}{% else %}{{ completition.origin_contract.number }}{% endif %} від {{ completition.origin_contract.sign_date|date }}
+            {% elif completition.origin_invoice %}
+            по рахунку № {% if completition.origin_invoice.reference %}{{ completition.origin_invoice.reference }}{% else %}{{ completition.origin_invoice.number }}{% endif %} від {{ completition.origin_invoice.issue_date|date }}
+            {% endif %}
+            :
+        </p>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-condensed" role="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">№</th>
+                        <th>{% translate 'Product name' %}</th>
+                        <th class="text-center">{% translate 'UOM' %}</th>
+                        <th class="text-center">{% translate 'Quantity' %}</th>
+                        <th class="text-right">{% translate 'Price' %}</th>
+                        <th class="text-right">{% translate 'Amount' %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for line in completition.lines.all %}
+                    <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td>{{ line.product_hint }}</td>
+                        <td class="text-center">{{ line.product_uom_hint }}</td>
+                        <td class="text-center">{{ line.qty|floatformat:0 }}</td>
+                        <td class="text-right">{{ line.price|floatformat:2 }}</td>
+                        <td class="text-right">{{ line.amount|floatformat:2 }}</td>
+                    </tr>
+                {% endfor %}
+                    <tr>
+                        <td colspan="6"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <p>Загальна вартість послуг без ПДВ: <strong>{{ completition.amount|floatformat:2 }} {% trans completition.currency %}</strong> ({{ amount_string }})
+            <br>Послуги надані повністю, сторони претензій одна до одної не мають.</p>
+        </div>
+    </div>
+    <br/><br/>
+    <div class="row">
+        <div class="col-5">
+            <p>ВІД ВИКОНАВЦЯ:</p>
+            <p>{{ completition.sign_date }}</p>
+            <address>
+                <strong>{{ completition.company.fop_name_full }}</strong><br/>
+                {{ completition.company.address }}<br/>
+                <u>{% translate 'P.' %}</u> {{ completition.company.tel_number }}<br/>
+                {% if completition.company.tel_fax %}<u>{% translate 'Fax' %}</u> {{ completition.company.tel_fax }}<br/>{% endif %}
+                {% if completition.company.itn %}<u>{% translate 'ITN' %}</u> {{ completition.company.itn }}<br/>{% endif %}
+                {% if completition.company.bank_accounts %}
+                    <u>IBAN</u> {{ completition.company.main_bank_account.iban }}<br/>
+                    {{ completition.company.main_bank_account.bank_name }}<br/>
+                {% endif %}
+                Є платником єдиного податку
+                <br><br><br>
+                ____________________{{ completition.company.own_name_short }}<br>
+                <small class="ml-3">м.п.</small>
+            </address>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-5">
+            <p>ВІД ЗАМОВНИКА:</p>
+            <p>{{ completition.sign_date }}</p>
+            <address>
+                <strong>{{ completition.partner.name }}</strong><br/>
+                {{ completition.partner.address }}<br/>
+                <u>{% translate 'P.' %}</u> {{ completition.partner.tel_number }}<br/>
+                {% if completition.partner.tel_fax %}<u>{% translate 'Fax' %}</u> {{ completition.partner.tel_fax }}<br/>{% endif %}
+                {% if completition.partner.itn %}<u>{% translate 'ITN' %}</u> {{ completition.partner.itn }}<br/>{% endif %}
+                {% if completition.partner.bank_accounts %}
+                    <u>IBAN</u> {{ completition.partner.bank_accounts.first.iban }}<br/>
+                    {{ completition.partner.bank_accounts.first.bank_name }}
+                {% endif %}
+                <br>
+                <br><br>
+                ____________________{{ completition.partner.representative_name_short }}<br>
+                <small class="ml-3">м.п.</small>
+            </address>
+        </div>
+    </div>
+    <br/><br/>
+
+{% endblock %}
+

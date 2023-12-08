@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{{ partner.name }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <h3>{% translate 'Details' %} <a href="{% url 'partner_modify' partner.pk %}" class="btn btn-link btn-sm" title="{% translate 'Modify partner details' %}"><i class="fa fa-pencil"></i></a></h3>
+            {% if partner.is_foreign %}<b>{% translate 'Foreign' %}</b><br>{% endif %}
+            {% if partner.address_line_1 %}{{ partner.address_line_1 }}<br>{% endif %}
+            {% if partner.address_line_2 %}{{ partner.address_line_2 }}<br>{% endif %}
+            {% if partner.address_line_3 %}{{ partner.address_line_3 }}<br>{% endif %}
+            {% if partner.tel_number %}{{ partner.tel_number }}<br>{% endif %}
+            {% if partner.tel_fax %}{{ partner.tel_fax }}<br>{% endif %}
+            {% if partner.itn %}
+                <br>
+                {% translate 'ITN' %}: <kbd>{{ partner.itn }}</kbd><br>
+            {% endif %}
+            {% if partner.notes %}
+                <p>
+                {{ partner.notes }}
+                </p>
+            {% endif %}
+            <hr>
+            <h3>{% translate 'Bank accounts' %} <a href="{% url 'create_partner_bank_account' partner.pk %}" class="btn btn-link btn-sm" title="{% translate 'Create bank account' %}"><i class="fa fa-plus"></i></a></h3>
+            {% if partner.bank_accounts.count > 0 %}
+                {% for account in partner.bank_accounts.all %}
+                    <p>{% if account.actual %}<i class="fa fa-check text-success"></i> {% endif %}{{ account.bank_name }}<br><kbd>{{ account.iban_readable }}</kbd> <a href="{% url 'partner_bank_account_modify' account.pk %}" class="btn btn-link btn-sm" title="{% translate 'Modify bank account' %}"><i class="fa fa-pencil"></i></a></p>
+                {% endfor %}
+            {% else %}
+                {% translate 'No bank accounts were defined' %}
+            {% endif %}
+
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <h3>{% translate 'Representatives' %} <a href="{% url 'representative_create' partner.pk %}" class="btn btn-link btn-sm" title="{% translate 'Create partner representative' %}"><i class="fa fa-plus"></i></a></h3>
+            {% if partner.representatives %}
+                <p>
+                {% for person in partner.representatives.all %}
+                    {% if person.is_signer %}<i class="fa fa-check text-success"></i> {% endif %}<strong>{{ person.position }}</strong> {{ person.name_short }}<br>
+                {% endfor %}
+                </p>
+            {% else %}
+                {% translate 'No persons were defined' %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for partner in partners %}
+        <div class="col mb-4">
+            <div class="card">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <h5 class="card-title">{{ partner.name }} <a href="{% url 'partner_modify' partner.pk %}" class=""><i class="fa fa-pencil"></i></a></h5>
+                    <p class="card-text">
+                    </p>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary dropdown-toggle" type="button"
+                                id="partner_actions_menu_{{ partner.id }}"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-asterisk"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="partner_actions_menu_{{ partner.id }}">
+                            <h6 class="dropdown-header">{% translate 'Business actions' %}</h6>
+                            <a class="dropdown-item" href="#">{% translate 'Create invoice' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Create completition certificate' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Create contract' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Create transaction' %}</a>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="partner_documents_menu_{{ partner.id }}"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-archive"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="partner_documents_menu_{{ partner.id }}">
+                            <h6 class="dropdown-header">{% translate 'Documents archive' %}</h6>
+                            <a class="dropdown-item" href="#">{% translate 'Invoices' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Completition certificates' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Contracts' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Transactions' %}</a>
+                        </div>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <button class="btn btn-secondary-outline dropdown-toggle" type="button"
+                                id="partner_documents_menu_{{ partner.id }}"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-cogs"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="partner_documents_menu_{{ partner.id }}">
+                            <h6 class="dropdown-header">{% translate 'Partner setup' %}</h6>
+
+                            <a class="dropdown-item" href="{% url 'partner_modify' partner.pk %}">{% translate 'Modify partner info' %}</a>
+                            <a class="dropdown-item" href="{% url 'representative_list' partner.pk %}">{% translate 'Representative persons' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Bank accounts' %}</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            {% endfor %}
+    </div>
+{% endblock %}
+

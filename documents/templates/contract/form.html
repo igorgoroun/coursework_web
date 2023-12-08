@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block title %}{% translate 'Contract' %}{% endblock %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Contract' %}</h1>
+            <p>{% translate 'With' %} <strong>{{ partner.name }}</strong></p>
+            <hr>
+            <form action="" method="post">
+                {% bootstrap_form form layout='horizontal' %}
+                {% csrf_token %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">{% translate 'Save' %}</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

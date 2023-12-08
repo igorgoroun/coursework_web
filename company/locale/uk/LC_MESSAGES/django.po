@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-25 14:26+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: company/models/company.py:12
+msgid "FOP"
+msgstr "ФОП"
+
+#: company/models/company.py:13
+msgid "Entrepreneur"
+msgstr "Фізична особа-підприємець"
+
+#: company/models/company.py:15
+msgid "Last name"
+msgstr ""
+
+#: company/models/company.py:16
+msgid "First name"
+msgstr ""
+
+#: company/models/company.py:17
+msgid "Middle name"
+msgstr ""
+
+#: company/models/company.py:18
+msgid "Address line 1"
+msgstr ""
+
+#: company/models/company.py:19
+msgid "Address line 2"
+msgstr ""
+
+#: company/models/company.py:20
+msgid "Address line 3"
+msgstr ""
+
+#: company/models/company.py:23
+msgid "Personal tax number"
+msgstr ""
+
+#: company/models/company.py:24
+msgid "Legacy registration number"
+msgstr ""
+
+#: company/models/employee.py:16
+msgid "middle name"
+msgstr ""
+
+#: company/models/employee.py:18
+msgid "email address"
+msgstr ""
+
+#: company/models/employee.py:22 company/models/representative.py:19
+msgid "Current e-mail cannot be registered"
+msgstr ""
+
+#: company/models/employee.py:27 company/models/representative.py:25
+msgid "Granted to sign documents"
+msgstr ""
+
+#: company/models/representative.py:14
+msgid "Email address"
+msgstr ""
+
+#: company/templates/company/company_form.html:5
+#: company/templates/partner/partner_form.html:5
+msgid "Sign up"
+msgstr ""
+
+#: company/templates/company/company_form.html:10
+msgid "Company"
+msgstr ""
+
+#: company/templates/company/company_form.html:15
+#: company/templates/employee/employee_self_update_form.html:15
+#: company/templates/partner/partner_form.html:15
+#: company/templates/partner/partner_representative_form.html:16
+msgid "Save"
+msgstr ""
+
+#: company/templates/employee/employee_self_update_form.html:5
+msgid "Employee profile"
+msgstr ""
+
+#: company/templates/employee/employee_self_update_form.html:10
+msgid "Employee"
+msgstr ""
+
+#: company/templates/login.html:5 company/templates/login.html:10
+#: company/templates/login.html:15
+msgid "Login"
+msgstr "Вхiд"
+
+#: company/templates/login.html:16
+msgid "Signup"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:11
+msgid "Details"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:12
+msgid "Foreign"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:19
+#: company/templates/partner/partner_details.html:95
+#: company/templates/partner/partner_list.html:64
+msgid "Bank accounts"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:19
+msgid "Create bank account"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:22
+msgid "Modify bank account"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:25
+msgid "No bank accounts were defined"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:30
+msgid "Representatives"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:38
+msgid "No persons were defined"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:41
+msgid "Create"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:63
+#: company/templates/partner/partner_list.html:32
+msgid "Business actions"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:64
+#: company/templates/partner/partner_list.html:33
+msgid "Create invoice"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:65
+#: company/templates/partner/partner_list.html:34
+msgid "Create completition certificate"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:66
+#: company/templates/partner/partner_list.html:35
+msgid "Create contract"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:67
+#: company/templates/partner/partner_list.html:36
+msgid "Create transaction"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:77
+#: company/templates/partner/partner_list.html:46
+msgid "Documents archive"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:78
+#: company/templates/partner/partner_list.html:47
+msgid "Invoices"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:79
+#: company/templates/partner/partner_list.html:48
+msgid "Completition certificates"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:80
+#: company/templates/partner/partner_list.html:49
+msgid "Contracts"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:81
+#: company/templates/partner/partner_list.html:50
+msgid "Transactions"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:91
+#: company/templates/partner/partner_list.html:60
+msgid "Partner setup"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:93
+#: company/templates/partner/partner_list.html:62
+msgid "Modify partner info"
+msgstr ""
+
+#: company/templates/partner/partner_details.html:94
+#: company/templates/partner/partner_list.html:63
+msgid "Representative persons"
+msgstr ""
+
+#: company/templates/partner/partner_form.html:10
+#: company/templates/partner/partner_representative_form.html:11
+msgid "Partner"
+msgstr ""
+
+#: company/templates/partner/partner_list.html:6
+msgid "Partners"
+msgstr ""
+
+#: company/templates/partner/partner_list.html:61
+msgid "Partner details"
+msgstr ""
+
+#: company/templates/partner/partner_representative_form.html:5
+#: company/templates/partner/partner_representative_form.html:10
+msgid "Representative"
+msgstr ""

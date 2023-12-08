@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block title %}{% translate 'Completition certificate' %}{% endblock %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Completition Certificate' %}</h1>
+            <hr>
+            <form action="" method="post">
+                {% bootstrap_form form layout='horizontal' %}
+                {% csrf_token %}
+                <h2>Lines</h2>
+                {{ completition_lines_formset.non_form_errors }}
+                {{ completition_lines_formset.management_form }}
+                <div class="row">
+                    <div class="col-6">
+                        Найменування
+                    </div>
+                    <div class="col-1">
+                        Од.
+                    </div>
+                    <div class="col-1">
+                        К-ть
+                    </div>
+                    <div class="col-2">
+                        Ціна
+                    </div>
+                </div>
+                {% for line_form in completition_lines_formset %}
+                    <div class="form-row align-items-center">
+                    {# {% bootstrap_form line_form layout='row' %} #}
+
+                        <div class="col-6">
+                            {% bootstrap_field line_form.product_hint show_label=False %}
+                        </div>
+                        <div class="col-1">
+                            {% bootstrap_field line_form.product_uom_hint show_label=False %}
+                        </div>
+                        <div class="col-1">
+                            {% bootstrap_field line_form.qty show_label=False %}
+                        </div>
+                        <div class="col-2">
+                            {% bootstrap_field line_form.price show_label=False %}
+                        </div>
+                        <div class="col-2">
+                            {% if invoice_lines_formset.can_delete %}
+                                {% bootstrap_field line_form.DELETE show_label=False %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">{% translate 'Save' %}</button>
+                {% endbuttons %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

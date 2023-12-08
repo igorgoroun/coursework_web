@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block title %}{% translate 'Confirm delete' %}{% endblock %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-12">
+
+            <form method="post">
+                {% csrf_token %}
+                <p>{% translate 'Are you sure you want to delete' %} <strong>{{ object }}</strong>?</p>
+                <button type="submit" class="btn btn-primary">{% translate 'Confirm delete' %}</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

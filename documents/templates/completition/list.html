@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Completition certificate' %}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-condensed" role="table">
+                <thead>
+                    <tr>
+                        <th>{% translate 'Number' %}</th>
+                        <th>{% translate 'Partner' %}</th>
+                        <th>{% translate 'Reference' %}</th>
+                        <th>{% translate 'Sign Date' %}</th>
+                        <th>{% translate 'Signer' %}</th>
+                        <th>{% translate 'Partner Signer' %}</th>
+                        <th>{% translate 'Amount' %}</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for record in completitions %}
+                    <tr>
+                        <td>{{ record.number }}</td>
+                        <td>{{ record.partner }}</td>
+                        <td>{{ record.reference }}</td>
+                        <td>{{ record.sign_date }}</td>
+                        <td>{{ record.company_signer.name_short }}</td>
+                        <td>{{ record.partner_signer }}</td>
+                        <td>{{ record.amount }}</td>
+                        <td class="pt-2 pb-1">
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                        id="completition_menu_{{ record.pk }}"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-asterisk"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="completition_menu_{{ record.pk }}">
+                                    <h6 class="dropdown-header">{% translate 'Business actions' %}</h6>
+                                    <a class="dropdown-item" href="#">{% translate 'Create invoice' %}</a>
+                                    <a class="dropdown-item" href="#">{% translate 'Create transaction' %}</a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">{% translate 'Record actions' %}</h6>
+                                    <a class="dropdown-item" href="{% url 'completition_print' record.pk %}">{% translate 'Print' %}</a>
+                                    <a class="dropdown-item" href="{% url 'completition_modify' record.pk %}">{% translate 'Modify' %}</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+

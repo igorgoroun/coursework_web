@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Invoices' %}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-condensed" role="table">
+                <thead>
+                    <tr>
+                        <th>{% translate 'Number' %}</th>
+                        <th>{% translate 'Partner' %}</th>
+                        <th>{% translate 'Reference' %}</th>
+                        <th>{% translate 'Issued' %}</th>
+                        <th class="text-right">{% translate 'Amount' %}</th>
+                        <th> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for record in invoices %}
+                    <tr>
+                        <td>{{ record.number }}</td>
+                        <td>{{ record.partner }}</td>
+                        <td>{{ record.reference }}</td>
+                        <td>{{ record.issue_date }}</td>
+                        <td class="text-right"><strong>{{ record.amount|floatformat:2 }}</strong> <small>{{ record.currency }}</small></td>
+                        <td class="pt-2 pb-1">
+                            <div class="btn-group btn-group-sm">
+                                <button class="btn btn-primary dropdown-toggle" type="button"
+                                        id="contract_menu_{{ record.pk }}"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-asterisk"></i>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="contract_menu_{{ record.pk }}">
+                                    <h6 class="dropdown-header">{% translate 'Business actions' %}</h6>
+                                    <a class="dropdown-item" href="{% url 'completition_create_for_invoice' record.pk %}">{% translate 'Create completition certificate' %}</a>
+                                    <div class="dropdown-divider"></div>
+                                    <h6 class="dropdown-header">{% translate 'Record actions' %}</h6>
+                                    <a class="dropdown-item" href="{% url 'invoice_print' record.pk %}">{% translate 'Print' %}</a>
+                                    <a class="dropdown-item" href="{% url 'invoice_modify' record.pk %}">{% translate 'Modify' %}</a>
+                                    <a class="dropdown-item" href="{% url 'invoice_remove' record.pk %}">{% translate 'Remove' %}</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+

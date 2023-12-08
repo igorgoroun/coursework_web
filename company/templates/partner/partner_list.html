@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Partners' %} <small><a href="{% url 'partner_create' %}">+</a></small></h1>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for partner in partners %}
+        <div class="col mb-4">
+            <div class="card">
+                <!--<img src="..." class="card-img-top" alt="...">-->
+                <div class="card-body">
+                    <h5 class="card-title">{{ partner.name }}</h5>
+                    <p class="card-text">
+                        {% if partner.address_line_1 %}{{ partner.address_line_1 }}<br>{% endif %}
+                        {% if partner.address_line_2 %}{{ partner.address_line_2 }}<br>{% endif %}
+                        {% if partner.address_line_3 %}{{ partner.address_line_3 }}<br>{% endif %}
+                        {% if partner.tel_number %}{{ partner.tel_number }}<br>{% endif %}
+                        {% if partner.tel_fax %}{{ partner.tel_fax }}<br>{% endif %}
+                    </p>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary dropdown-toggle" type="button"
+                                id="partner_actions_menu_{{ partner.pk }}"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-asterisk"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="partner_actions_menu_{{ partner.pk }}">
+                            <h6 class="dropdown-header">{% translate 'Business actions' %}</h6>
+                            <a class="dropdown-item" href="{% url 'invoice_create_for_partner' partner.pk %}">{% translate 'Create invoice' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Create completition certificate' %}</a>
+                            <a class="dropdown-item" href="{% url 'contract_create_for_partner' partner.pk %}">{% translate 'Create contract' %}</a>
+{#                            <a class="dropdown-item" href="#">{% translate 'Create transaction' %}</a>#}
+                        </div>
+                    </div>
+                        <!--
+                    <div class="btn-group">
+                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                id="partner_documents_menu_{{ partner.id }}"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-archive"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="partner_documents_menu_{{ partner.pk }}">
+                            <h6 class="dropdown-header">{% translate 'Documents archive' %}</h6>
+                            <a class="dropdown-item" href="#">{% translate 'Invoices' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Completition certificates' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Contracts' %}</a>
+                            <a class="dropdown-item" href="#">{% translate 'Transactions' %}</a>
+                        </div>
+                    </div>
+                        -->
+                    <div class="btn-group pull-right">
+                        <a class="btn btn-secondary-outline" href="{% url 'partner_details' partner.pk %}">
+                            <i class="fa fa-cogs"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+            {% endfor %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,76 @@
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% bootstrap_css %}
+    <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/modifications.css' %}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a href="{% url 'homepage' %}" class="navbar-brand">itacc</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                    <!--
+                <li class="nav-item _active">
+                    <a class="nav-link" href="#">{% translate 'Projects' %}</a>
+                </li>
+                -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'partner_list' %}">{% translate 'Partners' %}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="docsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% translate 'Documents' %}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="docsDropdown">
+                        <a class="dropdown-item" href="{% url 'invoice_list' %}">{% translate 'Invoices' %}</a>
+                        <a class="dropdown-item" href="{% url 'completition_list' %}">{% translate 'Completition certificates' %}</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'contract_list' %}">{% translate 'Contracts' %}</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dictsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {% translate 'Dictionaries' %}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dictsDropdown">
+                        <a class="dropdown-item" href="{% url 'sequence_list' %}">{% translate 'Sequences' %}</a>
+                        <a class="dropdown-item" href="#">{% translate 'Bank accounts' %}</a>
+                        <a class="dropdown-item" href="#">{% translate 'Products and services' %}</a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'setup_dashboard' %}" title="" class="nav-link"><i class="fa fa-cogs"></i> {% translate 'Setup' %}</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" title="{% translate 'Logout' %}" class="nav-link"><i class="fa fa-sign-out"></i> {% translate 'Logout' %}</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+
+    {% bootstrap_javascript jquery='full' %}
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    {% bootstrap_css %}
+    <link href="{% static 'favicon.ico' %}" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+{% block tpl_css %}
+{% endblock %}
+</head>
+<body>
+
+<div class="container-fluid">
+    {% block content %}
+    {% endblock %}
+</div>
+
+    {% bootstrap_javascript jquery='full' %}
+
+</body>
+</html>

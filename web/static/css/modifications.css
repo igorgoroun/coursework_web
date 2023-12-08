@@ -1,0 +1,38 @@
+.navbar-brand,
+.navbar-light .navbar-brand {
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 1.2em;
+    padding-right: 1.3em;
+    border-right: 1px solid #bbb;
+    color: #483d8b;
+}
+
+.display-1, .display-3 {
+    color: #483d8b;
+}
+.display-2, .display-4 {
+    color: #222;
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: #483d8b;
+}
+a {
+   color: #7267b8;
+}
+
+.navbar-light .navbar-toggler {
+    border-color: transparent;
+}
+
+.btn-primary:hover {
+    background-color: #352a72;
+    border-color: #352a72;
+}
+
+.btn-primary {
+    background-color: #483d8b;
+    border-color: #31276b;
+}

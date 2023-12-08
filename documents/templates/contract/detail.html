@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% block title %}{% translate 'Contract' %}{% endblock %}
+{% block content %}
+    <br>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Contract' %}</h1>
+            <p>{% translate 'With' %} <strong>{{ contract.partner.name }}</strong></p>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+            <h3>{% translate 'Invoices' %}</h3>
+            <table class="table table-sm table-stripped">
+            {% for invoice in contract.invoices.all %}
+                <tr>
+                    <td>{{ invoice }}</td>
+                    <td>{{ invoice.issue_date }}</td>
+                    <td class="text-right"><strong>{{ invoice.amount|floatformat:2 }}</strong> <small>{{ invoice.currency }}</small></td>
+                </tr>
+                
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

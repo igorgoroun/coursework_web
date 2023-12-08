@@ -1,0 +1,431 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-25 14:26+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: documents/models/completition.py:15 documents/models/contract.py:11
+msgid "Contract number"
+msgstr "Номер контракту"
+
+#: documents/models/completition.py:16 documents/models/contract.py:12
+#: documents/models/invoice.py:23
+msgid "External reference"
+msgstr "Зовнішний номер"
+
+#: documents/models/completition.py:17 documents/models/contract.py:13
+#: documents/models/invoice.py:24
+msgid "My side"
+msgstr "З мого боку"
+
+#: documents/models/completition.py:18 documents/models/contract.py:14
+#: documents/models/invoice.py:25
+msgid "Signer from my side"
+msgstr "З мого боку"
+
+#: documents/models/completition.py:19 documents/models/contract.py:15
+#: documents/models/invoice.py:26
+msgid "Partner side"
+msgstr "Із сторони партнера"
+
+#: documents/models/completition.py:20 documents/models/contract.py:16
+msgid "Signer from partner side"
+msgstr "Із сторони партнера"
+
+#: documents/models/completition.py:22 documents/models/contract.py:17
+#: documents/models/contract.py:39
+msgid "Sign date"
+msgstr "Дата підписання"
+
+#: documents/models/completition.py:23 documents/models/contract.py:20
+#: documents/models/invoice.py:28
+msgid "Created by user"
+msgstr ""
+
+#: documents/models/completition.py:25 documents/models/invoice.py:29
+msgid "Origin Contract"
+msgstr ""
+
+#: documents/models/completition.py:26
+#, fuzzy
+#| msgid "Invoice"
+msgid "Origin Invoice"
+msgstr "Рахунок"
+
+#: documents/models/completition.py:27 documents/models/contract.py:21
+#: documents/models/invoice.py:30
+msgid "Currency"
+msgstr ""
+
+#: documents/models/completition.py:43 documents/models/sequence.py:88
+#: documents/templates/completition/form.html:5
+#: documents/templates/completition/list.html:6
+#: documents/templates/contract/list.html:40
+msgid "Completition certificate"
+msgstr "Акт виконаних робіт"
+
+#: documents/models/completition.py:44 documents/models/invoice.py:49
+msgid "Product description"
+msgstr "Найменування"
+
+#: documents/models/completition.py:46 documents/models/invoice.py:51
+msgid "UOM hint"
+msgstr "Од.виміру"
+
+#: documents/models/completition.py:47 documents/models/invoice.py:52
+msgid "Product quantity"
+msgstr "Кількість"
+
+#: documents/models/completition.py:48 documents/models/invoice.py:53
+msgid "Unit price"
+msgstr "Ціна"
+
+#: documents/models/contract.py:18
+msgid "Contract closing date"
+msgstr "Дата закінчення контракту"
+
+#: documents/models/contract.py:19
+msgid "Contract has infinite validity"
+msgstr "Немає кінцевої дати"
+
+#: documents/models/contract.py:22
+#, fuzzy
+#| msgid "Unit price"
+msgid "Total price"
+msgstr "Ціна"
+
+#: documents/models/contract.py:23
+msgid "Contract short notes"
+msgstr "Замітки до контракта"
+
+#: documents/models/contract.py:37 documents/models/sequence.py:89
+#: documents/templates/contract/detail.html:5
+#: documents/templates/contract/detail.html:10
+#: documents/templates/contract/form.html:5
+#: documents/templates/contract/form.html:10
+msgid "Contract"
+msgstr "Договір"
+
+#: documents/models/contract.py:38
+#: documents/templates/completition/list.html:16
+#: documents/templates/contract/list.html:16
+#: documents/templates/invoice/list.html:16
+msgid "Reference"
+msgstr "Посилання"
+
+#: documents/models/contract.py:40
+#: documents/templates/completition/print_ua.html:76
+#: documents/templates/invoice/print_foreign.html:105
+#: documents/templates/invoice/print_ua.html:67
+msgid "Price"
+msgstr "Ціна"
+
+#: documents/models/contract.py:41
+#, fuzzy
+#| msgid "Contract short notes"
+msgid "Short notes"
+msgstr "Замітки до контракта"
+
+#: documents/models/invoice.py:18
+msgid "Invoice direction"
+msgstr ""
+
+#: documents/models/invoice.py:22
+msgid "Invoice number"
+msgstr "Номер рахунку"
+
+#: documents/models/invoice.py:27
+msgid "Issue date"
+msgstr "Дата"
+
+#: documents/models/invoice.py:31
+msgid "Com short notes"
+msgstr ""
+
+#: documents/models/invoice.py:48 documents/models/sequence.py:87
+#: documents/templates/contract/list.html:39
+#: documents/templates/invoice/form.html:5
+#: documents/templates/invoice/form.html:10
+#: documents/templates/invoice/print_foreign.html:10
+#: documents/templates/invoice/print_ua.html:53
+msgid "Invoice"
+msgstr "Рахунок"
+
+#: documents/models/sequence.py:90
+msgid "Bank transaction"
+msgstr "Банківська транзакція"
+
+#: documents/models/sequence.py:94
+msgid "Sequence type"
+msgstr "Тип нумератора"
+
+#: documents/models/sequence.py:95
+msgid "Step"
+msgstr "Крок"
+
+#: documents/models/sequence.py:96
+msgid "Template in jinja format"
+msgstr ""
+
+#: documents/models/sequence.py:108 documents/models/sequence.py:115
+msgid "Year"
+msgstr "Рік"
+
+#: documents/models/sequence.py:109 documents/models/sequence.py:117
+msgid "Month"
+msgstr "Місяць"
+
+#: documents/models/sequence.py:110
+msgid "Number for year"
+msgstr ""
+
+#: documents/models/sequence.py:111
+msgid "Number in document month"
+msgstr ""
+
+#: documents/models/sequence.py:116
+msgid "Number in year"
+msgstr ""
+
+#: documents/models/sequence.py:118
+msgid "Number in month"
+msgstr ""
+
+#: documents/templates/completition/form.html:10
+msgid "Completition Certificate"
+msgstr "Акт виконаних робіт"
+
+#: documents/templates/completition/form.html:56
+#: documents/templates/contract/form.html:17
+#: documents/templates/invoice/form.html:57
+#: documents/templates/sequence/form.html:15
+msgid "Save"
+msgstr "Зберегти"
+
+#: documents/templates/completition/list.html:14
+#: documents/templates/contract/list.html:14
+#: documents/templates/invoice/list.html:14
+msgid "Number"
+msgstr "Номер"
+
+#: documents/templates/completition/list.html:15
+#: documents/templates/contract/list.html:15
+#: documents/templates/invoice/list.html:15
+msgid "Partner"
+msgstr "Партнер"
+
+#: documents/templates/completition/list.html:17
+#: documents/templates/contract/list.html:17
+msgid "Sign Date"
+msgstr "Дата підписання"
+
+#: documents/templates/completition/list.html:18
+msgid "Signer"
+msgstr "Підписав"
+
+#: documents/templates/completition/list.html:19
+msgid "Partner Signer"
+msgstr "Із сторони партнера"
+
+#: documents/templates/completition/list.html:20
+#: documents/templates/completition/print_ua.html:77
+#: documents/templates/contract/list.html:18
+#: documents/templates/invoice/list.html:18
+#: documents/templates/invoice/print_foreign.html:106
+#: documents/templates/invoice/print_ua.html:68
+msgid "Amount"
+msgstr "Всього"
+
+#: documents/templates/completition/list.html:42
+#: documents/templates/invoice/list.html:38
+msgid "Business actions"
+msgstr "Дії"
+
+#: documents/templates/completition/list.html:43
+msgid "Create invoice"
+msgstr "Створити інвойс"
+
+#: documents/templates/completition/list.html:44
+msgid "Create transaction"
+msgstr "Зареєструвати транзакцію"
+
+#: documents/templates/completition/list.html:46
+#: documents/templates/invoice/list.html:41
+msgid "Record actions"
+msgstr "Дії запису"
+
+#: documents/templates/completition/list.html:47
+#: documents/templates/invoice/list.html:42
+msgid "Print"
+msgstr "Друк"
+
+#: documents/templates/completition/list.html:48
+#: documents/templates/contract/list.html:43
+#: documents/templates/invoice/list.html:43
+msgid "Modify"
+msgstr "Змінити"
+
+#: documents/templates/completition/print_ua.html:73
+#: documents/templates/invoice/print_foreign.html:102
+#: documents/templates/invoice/print_ua.html:64
+msgid "Product name"
+msgstr "Найменування"
+
+#: documents/templates/completition/print_ua.html:74
+#: documents/templates/invoice/print_foreign.html:103
+#: documents/templates/invoice/print_ua.html:65
+msgid "UOM"
+msgstr "Од.виміру"
+
+#: documents/templates/completition/print_ua.html:75
+#: documents/templates/invoice/print_foreign.html:104
+#: documents/templates/invoice/print_ua.html:66
+msgid "Quantity"
+msgstr "Кількість"
+
+#: documents/templates/completition/print_ua.html:112
+#: documents/templates/completition/print_ua.html:131
+#: documents/templates/invoice/print_foreign.html:63
+#: documents/templates/invoice/print_foreign.html:84
+#: documents/templates/invoice/print_ua.html:17
+#: documents/templates/invoice/print_ua.html:38
+msgid "P."
+msgstr "Тел."
+
+#: documents/templates/completition/print_ua.html:113
+#: documents/templates/completition/print_ua.html:132
+#: documents/templates/invoice/print_foreign.html:64
+#: documents/templates/invoice/print_foreign.html:85
+#: documents/templates/invoice/print_ua.html:18
+#: documents/templates/invoice/print_ua.html:39
+msgid "Fax"
+msgstr "Факс"
+
+#: documents/templates/completition/print_ua.html:114
+#: documents/templates/completition/print_ua.html:133
+#: documents/templates/invoice/print_foreign.html:65
+#: documents/templates/invoice/print_foreign.html:86
+#: documents/templates/invoice/print_ua.html:19
+#: documents/templates/invoice/print_ua.html:40
+msgid "ITN"
+msgstr "ЄДРПОУ"
+
+#: documents/templates/contract/detail.html:11
+#: documents/templates/contract/form.html:11
+msgid "With"
+msgstr ""
+
+#: documents/templates/contract/detail.html:18
+#: documents/templates/invoice/list.html:6
+msgid "Invoices"
+msgstr "Інвойси"
+
+#: documents/templates/contract/list.html:6
+msgid "Contracts"
+msgstr "Договори"
+
+#: documents/templates/contract/list.html:38
+#, fuzzy
+#| msgid "Issued"
+msgid "Issue"
+msgstr "Виданий"
+
+#: documents/templates/contract/list.html:41
+#, fuzzy
+#| msgid "Bank transaction"
+msgid "Transaction"
+msgstr "Банківська транзакція"
+
+#: documents/templates/invoice/form.html:11
+msgid "issued for"
+msgstr "виписан для"
+
+#: documents/templates/invoice/list.html:17
+msgid "Issued"
+msgstr "Виданий"
+
+#: documents/templates/invoice/list.html:39
+msgid "Create completition certificate"
+msgstr "Створити акт"
+
+#: documents/templates/invoice/print_foreign.html:19
+msgid "for the contract signed on"
+msgstr ""
+
+#: documents/templates/invoice/print_foreign.html:28
+#, fuzzy
+#| msgid "Create invoice"
+msgid "Date of invoice"
+msgstr "Створити інвойс"
+
+#: documents/templates/invoice/print_foreign.html:36
+msgid "Supplier"
+msgstr ""
+
+#: documents/templates/invoice/print_foreign.html:37
+msgid "Address"
+msgstr ""
+
+#: documents/templates/invoice/print_foreign.html:47
+msgid "Customer"
+msgstr ""
+
+#: documents/templates/invoice/print_foreign.html:56
+#: documents/templates/invoice/print_ua.html:10
+msgid "Vendor"
+msgstr "Постачальник"
+
+#: documents/templates/invoice/print_foreign.html:77
+#: documents/templates/invoice/print_ua.html:31
+msgid "Recipient"
+msgstr "Одержувач"
+
+#: documents/templates/invoice/print_foreign.html:121
+#: documents/templates/invoice/print_ua.html:83
+msgid "Amount total"
+msgstr "Всього"
+
+#: documents/templates/invoice/print_foreign.html:134
+#: documents/templates/invoice/print_ua.html:96
+msgid "Total to pay"
+msgstr "Всього на суму"
+
+#: documents/templates/invoice/print_foreign.html:135
+#: documents/templates/invoice/print_ua.html:97
+msgid "No VAT"
+msgstr "Без ПДВ"
+
+#: documents/templates/invoice/print_foreign.html:141
+#: documents/templates/invoice/print_ua.html:103
+msgid "Invoice signer"
+msgstr "Виписав"
+
+#: documents/templates/sequence/form.html:5
+#: documents/templates/sequence/form.html:10
+msgid "Sequence"
+msgstr "Нумератор"
+
+#: documents/templates/sequence/list.html:6
+msgid "Sequences"
+msgstr "Нумератори"
+
+#: documents/templates/sequence/list.html:27
+msgid "Modify sequence setup"
+msgstr ""

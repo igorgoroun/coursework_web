@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+            <h1 class="display-3">{% translate 'Setup' %}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6">
+            {% if user.company %}
+                <h4>{{ user.company.fop_name_short }} <a href="{% url 'modify_company' user.company.pk %}" class="btn btn-link btn-sm" title="{% translate 'Modify company info' %}"><i class="fa fa-pencil"></i></a></h4>
+                <address>
+                    <strong>{% translate 'Details' %}</strong><br>
+                    {% if user.company.address_line_1 %}{{ user.company.address_line_1 }}<br>{% endif %}
+                    {% if user.company.address_line_2 %}{{ user.company.address_line_2 }}<br>{% endif %}
+                    {% if user.company.address_line_3 %}{{ user.company.address_line_3 }}<br>{% endif %}
+                    {% translate 'Tel.' %} {{ user.company.tel_number }}<br>
+                    {% translate 'Tax.nr.' %} <kbd>{{ user.company.itn }}</kbd><br>
+                    {% translate 'Reg.nr' %} <kbd>{{ user.company.reg }}</kbd>
+                </address>
+
+                <hr>
+                <h4>{% translate 'Bank accounts' %} <a href="{% url 'create_company_bank_account' %}" class="btn btn-link btn-sm" title="{% translate 'Create bank account' %}"><i class="fa fa-plus"></i></a></h4>
+                {% if bank_accounts.count > 0 %}
+                    {% for account in bank_accounts %}
+                        <p>{% if account.actual %}<i class="fa fa-check text-success"></i> {% endif %}{{ account.bank_name }} <br/><kbd>{{ account.iban_readable }}</kbd> <a href="{% url 'company_bank_account_modify' account.pk %}" class="btn btn-link btn-sm" title="{% translate 'Modify bank account' %}"><i class="fa fa-pencil"></i></a></p>
+                    {% endfor %}
+                {% else %}
+                {% endif %}
+
+            {% else %}
+                <a href="{% url 'create_company' %}" class="btn btn-primary">{% translate 'Fill company info' %}</a>
+            {% endif %}
+        </div>
+        <div class="col-xs-6 col-sm-6">
+            <h4>{{ user.name_short }} <a href="{% url 'modify_employee' %}" class="btn btn-link btn-sm" title="{% translate 'Modify my info' %}"><i class="fa fa-pencil"></i></a></h4>
+            <address>
+                <strong>{% translate 'Representatives' %}</strong><br>
+                {{ user.email }}<br>
+                {% if user.tel_mobile %}{{ user.tel_mobile }}<br>{% endif %}
+                {% if user.tel_other %}{{ user.tel_other }}<br>{% endif %}
+                <p><i class="fa {% if user.is_signer %}fa-check{% else %}fa-times{% endif %} text-{% if user.is_signer %}success{% else %}danger{% endif %}"></i> {% translate 'Sign documents' %}</p>
+
+            </address>
+        </div>
+    </div>
+{% endblock %}
